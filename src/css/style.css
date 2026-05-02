@@ -1,0 +1,259 @@
+/* ===== Base ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  gap: 18px;
+  padding: 32px 16px;
+
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+
+  color: #102a43;
+  background: linear-gradient(180deg, #f7fbff 0%, #eef6ff 50%, #fdf7ff 100%);
+}
+
+/* ===== Title ===== */
+h1 {
+  margin: 0;
+  font-size: clamp(28px, 3vw, 40px);
+  letter-spacing: 0.06em;
+}
+
+/* ===== ボタン配置 ===== */
+.button-group {
+  width: min(520px, 92vw);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+/* ===== 共通ボタン ===== */
+#button,
+#loveBtn,
+#www_button,
+#psychoBtn {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: 12px;
+
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+
+  box-shadow: 0 10px 22px rgba(16, 42, 67, 0.18);
+  transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease;
+}
+
+#button:hover,
+#loveBtn:hover,
+#www_button:hover,
+#psychoBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(16, 42, 67, 0.22);
+  filter: brightness(1.05);
+}
+
+#button:active,
+#loveBtn:active,
+#www_button:active,
+#psychoBtn:active {
+  transform: translateY(0);
+  box-shadow: 0 8px 18px rgba(16, 42, 67, 0.18);
+}
+
+#button:focus-visible,
+#loveBtn:focus-visible,
+#www_button:focus-visible,
+#psychoBtn:focus-visible {
+  outline: 3px solid rgba(16, 42, 67, 0.2);
+  outline-offset: 4px;
+}
+
+/* ===== 通常ボタン ===== */
+#button {
+  background: linear-gradient(135deg, #2cb1bc 0%, #127fbf 100%);
+}
+
+/* ===== 恋愛ボタン ===== */
+#loveBtn {
+  background: linear-gradient(135deg, #ff7eb3 0%, #ff4f8b 50%, #ff6fa5 100%);
+  box-shadow: 0 10px 22px rgba(255, 79, 139, 0.28);
+}
+
+#loveBtn:hover {
+  box-shadow: 0 14px 28px rgba(255, 79, 139, 0.35);
+  filter: brightness(1.08);
+}
+
+#loveBtn:focus-visible {
+  outline: 3px solid rgba(255, 79, 139, 0.3);
+}
+
+/* ===== wwwボタン ===== */
+#www_button {
+  background: linear-gradient(135deg, #f6ad55 0%, #ed8936 50%, #dd6b20 100%);
+  box-shadow: 0 10px 22px rgba(221, 107, 32, 0.28);
+}
+
+#www_button:hover {
+  box-shadow: 0 14px 28px rgba(221, 107, 32, 0.35);
+  filter: brightness(1.08);
+}
+
+#www_button:focus-visible {
+  outline: 3px solid rgba(221, 107, 32, 0.28);
+}
+
+/* ===== サイコパスボタン ===== */
+#psychoBtn {
+  background: linear-gradient(135deg, #5f27cd 0%, #341f97 50%, #222f3e 100%);
+  box-shadow: 0 10px 22px rgba(52, 31, 151, 0.3);
+}
+
+#psychoBtn:hover {
+  box-shadow: 0 14px 28px rgba(52, 31, 151, 0.38);
+  filter: brightness(1.08);
+}
+
+#psychoBtn:focus-visible {
+  outline: 3px solid rgba(95, 39, 205, 0.3);
+}
+
+/* ===== Balloon ===== */
+.balloon {
+  width: min(760px, 92vw);
+  background: #ffffff;
+  border: 2px solid rgba(16, 42, 67, 0.12);
+  border-radius: 18px;
+  padding: 22px 20px;
+  box-shadow: 0 14px 30px rgba(16, 42, 67, 0.12);
+
+  position: relative;
+}
+
+/* tail */
+.balloon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -10px;
+  transform: translateX(-50%) rotate(45deg);
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-left: 2px solid rgba(16, 42, 67, 0.12);
+  border-top: 2px solid rgba(16, 42, 67, 0.12);
+}
+
+/* ===== Output text ===== */
+#output {
+  font-size: clamp(16px, 2.2vw, 22px);
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  word-break: break-word;
+}
+
+/* placeholder look */
+#output:empty,
+#output:not(:empty) {
+  min-height: 2.2em;
+}
+
+/* ===== Mobile tweaks ===== */
+@media (max-width: 480px) {
+  .button-group {
+    grid-template-columns: 1fr;
+  }
+
+  .balloon {
+    padding: 18px 16px;
+    border-radius: 16px;
+  }
+}
+
+/* ===== 背景を変えるボタン ===== */
+.back {
+  margin-top: 14px;
+}
+
+.back button {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+
+  padding: 12px 18px;
+  border-radius: 999px;
+
+  font-weight: 700;
+  font-size: 16px;
+  color: #7a3e6a;
+
+  background: linear-gradient(135deg, #ffd6e7 0%, #ffc2dd 50%, #ffe7f1 100%);
+  box-shadow:
+    0 8px 18px rgba(255, 182, 193, 0.35),
+    inset 0 2px 0 rgba(255, 255, 255, 0.7);
+
+  transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease;
+}
+
+.back button:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 24px rgba(255, 182, 193, 0.42),
+    inset 0 2px 0 rgba(255, 255, 255, 0.8);
+  filter: brightness(1.03);
+}
+
+.back button:active {
+  transform: translateY(0);
+  box-shadow:
+    0 6px 14px rgba(255, 182, 193, 0.3),
+    inset 0 2px 0 rgba(255, 255, 255, 0.7);
+}
+
+.back button:focus-visible {
+  outline: 3px solid rgba(255, 105, 180, 0.28);
+  outline-offset: 4px;
+}
+
+.kisekaeImage1{
+  background-image: url(../images/kisekae1.png);
+}
+
+.kisekaeImage2{
+  background-image: url(../images/kisekae2.png);
+}
+
+.kisekaeImage3{
+  background-image: url(../images/kisekae3.png)
+}
+
+.kisekaeImage4{
+  background-image: url(../images/kisekae4.png);
+}
+
+.kisekaeImage5{
+  background-image: url(../images/kisekae5.png);
+}
+
+.kisekaeImage6{
+  background-image: url(../images/kisekae6.png);
+}
+
+.kisekaeImage7{
+  background-image: url(../images/kisekae7.png);
+}
+
+.kisekaeImage8{
+  background-image: url(../images/kisekae8.png);
+}
